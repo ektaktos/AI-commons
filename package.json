@@ -1,0 +1,29 @@
+{
+  "name": "ai-commons",
+  "version": "1.0.0",
+  "description": "Solving child malnutrition problem",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ektaktos/AI-commons.git"
+  },
+  "author": "Team zoe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ektaktos/AI-commons/issues"
+  },
+  "homepage": "https://github.com/ektaktos/AI-commons#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.28",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.4",
+    "twilio": "^3.48.2"
+  }
+}
