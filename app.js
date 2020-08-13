@@ -16,7 +16,9 @@ const sendSms = (req, res) => {
 
 const receiveSms = async (req, res) => {
   const message =  req.body.message;
+  console.log(message);
   const splitted = message.split('\n');
+  console.log(splitted);
   if (splitted[0].length > 4) {
     // This is a new user, make registration then insert data to db with userId 
     const data = {
