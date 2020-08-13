@@ -17,7 +17,6 @@ const sendSms = (req, res) => {
 const receiveSms = async (req, res) => {
   const message =  req.body.message;
   const splitted = message.split('\n');
-  console.log(splitted)
   if (splitted[0].length > 4) {
     // This is a new user, make registration then insert data to db with userId 
     const data = {
@@ -31,7 +30,10 @@ const receiveSms = async (req, res) => {
     const newUser = await model.User.create(data);
     const Id = String(newUser.id);
     const userId = Id.padStart(4,'0');
-    const message = 'User saved';
+    const twiml = new messagingResponse();
+    twiml.message(`Saved Sucessfully, User ID is ${userId}`);
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    res.end(twiml.toString());
   }else{
     // user already exists, insert to db
     const data = {
@@ -39,12 +41,11 @@ const receiveSms = async (req, res) => {
       muac: splitted[1],
     }
     const newRecord = model.Measurements.create(data);
-    const message = 'Data saved';
+    const twiml = new messagingResponse();
+    twiml.message(`Saved Sucessfully`);
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    res.end(twiml.toString());
   }
-  
-  const twilm = new messagingResponse();
-  twilm.message()
-  res.status(200).send({message , userId: userID});
 }
 
 module.exports = {
