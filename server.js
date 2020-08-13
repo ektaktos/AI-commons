@@ -11,10 +11,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.post('/sms/send', sendSms);
-app.get('/sms/receive', receiveSms);
+app.post('/sms/receive', receiveSms);
 
 db.sequelize.sync().then((res) => {
-  console.log(res);
+  
 });
 
 app.listen(process.env.PORT, ()=> {

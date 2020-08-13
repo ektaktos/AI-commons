@@ -14,6 +14,6 @@ const sequelize = new Sequelize(
   db.sequelize = sequelize;
   db.Sequelize = Sequelize;
 
-  db.measurements = require('./measurements-model')(sequelize, Sequelize.DataTypes);
-  db.user = require('./user-model')(sequelize, Sequelize.DataTypes);
+  db.Measurements = require('./measurements-model')(sequelize, Sequelize.DataTypes);
+  db.User = require('./user-model')(sequelize, Sequelize.DataTypes);
   module.exports = db

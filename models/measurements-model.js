@@ -11,11 +11,7 @@ module.exports = (sequlize, Datatypes) =>{
       type: Datatypes.INTEGER,
       allowNull: false
     },
-    weight: {
-      type: Datatypes.DOUBLE,
-      allowNull: false
-    },
-    height: {
+    muac: {
       type: Datatypes.DOUBLE,
       allowNull: false
     }
