@@ -44,7 +44,7 @@ const receiveSms = async (req, res) => {
     }
     const newRecord = model.Measurements.create(data);
     const user = await model.User.findOne({
-      where: { id: userId },
+      where: { id: data.userId },
     });
     const twiml = new messagingResponse();
     twiml.message(`Hi, ${user.name} - ${user.id} \n Your Measurement has been received`);
