@@ -46,8 +46,10 @@ const receiveSms = async (req, res) => {
     const user = await model.User.findOne({
       where: { id: data.userId },
     });
+    const Id = String(user.id);
+    const userId = Id.padStart(4,'0');
     const twiml = new messagingResponse();
-    twiml.message(`Hi, ${user.name} - ${user.id} \n Your Measurement has been received`);
+    twiml.message(`Hi, ${user.name} (${userId}) \nYour Measurement has been received`);
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
   }
