@@ -30,7 +30,7 @@ const receiveSms = async (req, res) => {
     }
     const newUser = await model.User.create(data);
     const Id = String(newUser.id);
-    const userId = id.padStart(4,'0');
+    const userId = Id.padStart(4,'0');
     const message = 'User saved';
   }else{
     // user already exists, insert to db
