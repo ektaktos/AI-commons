@@ -19,7 +19,7 @@ const receiveSms = async (req, res) => {
   console.log(message);
   const splitted = message.split('\n');
   console.log(splitted);
-  if (splitted[0].length > 4) {
+  if (splitted.length > 3) {
     // This is a new user, make registration then insert data to db with userId 
     const data = {
       name: splitted[0],
