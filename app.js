@@ -33,7 +33,7 @@ const receiveSms = async (req, res) => {
     const Id = String(newUser.id);
     const userId = Id.padStart(4,'0');
     const twiml = new messagingResponse();
-    twiml.message(`Saved Sucessfully, User ID is ${userId}`);
+    twiml.message(`Hi ${newUser.name}, You have been registered. Your user ID is ${userId}. &#10 Note: You are to use this ID to send ${newUser.name}'s measurement.`);
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
   }else{
@@ -43,8 +43,11 @@ const receiveSms = async (req, res) => {
       muac: splitted[1],
     }
     const newRecord = model.Measurements.create(data);
+    const user = await model.User.findOne({
+      where: { id: userId },
+    });
     const twiml = new messagingResponse();
-    twiml.message(`Saved Sucessfully`);
+    twiml.message(`Hi, ${user.name} - ${user.id} \n Your Measurement has been received`);
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
   }
