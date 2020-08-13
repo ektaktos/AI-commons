@@ -15,7 +15,7 @@ const sendSms = (req, res) => {
 }
 
 const receiveSms = async (req, res) => {
-  const message =  req.body.message;
+  const message =  req.body.Body;
   console.log(message);
   const splitted = message.split('\n');
   console.log(splitted);
@@ -27,7 +27,7 @@ const receiveSms = async (req, res) => {
       sex: splitted[2],
       address: splitted[3],
       ethnicity: splitted[4],
-      phone: req.body.from
+      phone: req.body.From
     }
     const newUser = await model.User.create(data);
     const Id = String(newUser.id);
