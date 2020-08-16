@@ -33,7 +33,7 @@ const receiveSms = async (req, res) => {
     const Id = String(newUser.id);
     const userId = Id.padStart(4,'0');
     const twiml = new messagingResponse();
-    twiml.message(`Hi ${newUser.name}, You have been registered. Your user ID is ${userId}. &#10 Note: You are to use this ID to send ${newUser.name}'s measurement.`);
+    twiml.message(`Hi ${newUser.name}, You have been registered. Your user ID is ${userId}. \n Note: You are to use this ID to send ${newUser.name}'s measurement.`);
     res.writeHead(200, {'Content-Type': 'text/xml'});
     res.end(twiml.toString());
   }else{
